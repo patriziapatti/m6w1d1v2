@@ -1,0 +1,19 @@
+@baseUrl= http://localhost:5000/authors
+
+GET {{baseUrl}}
+
+###
+
+GET {{baseUrl}}/123
+
+###
+
+POST {{baseUrl}}
+
+###
+
+PUT {{baseUrl}}/66ba2144d7add63dd14e9d08
+
+###
+
+DELETE {{baseUrl}}/123

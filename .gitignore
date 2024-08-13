@@ -108,6 +108,8 @@ dist
 /node_modules
 /.pnp
 .pnp.js
+backend/node_modules
+frontend//node_modules
 
 # testing
 /coverage
