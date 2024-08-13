@@ -12,11 +12,11 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "name": "Robi",
-    "surname": "Allocco",
-    "email": "roby@roby.it",
-    "birthDate":  "1986-08-18",
-    "avatar": "robirobi"
+    "name": "Pippo",
+    "surname": "Pluto",
+    "email": "pippo@pluto.it",
+    "birthDate":  "1988-06-10",
+    "avatar": "pippopluto"
 } 
 
 ###

@@ -1,0 +1,46 @@
+@baseUrl= http://localhost:5000/blogPosts
+
+GET {{baseUrl}}
+
+###
+
+GET {{baseUrl}}/66bb6cd55c7771fd76ce69e3
+
+###
+
+POST {{baseUrl}}
+Content-Type: application/json
+ 
+{
+    "category": "qazsd",
+    "title": "polki",
+    "cover": "url della cover",
+    "readTime": {
+        "value": 3,
+        "unit": "min"
+    },
+    "author": "pat",
+    "content": "qwsd fgrtplo 12 fnfinftdgv sogttgnrkfn e"
+} 
+
+###
+
+PUT {{baseUrl}}/66bb6c895c7771fd76ce69e0
+Content-Type: application/json
+
+{
+    "category": "qwerty",
+    "title": "asdfghj asdfghj",
+    "cover": "url della cover",
+    "readTime": {
+        "value": 10,
+        "unit": "min"
+    },
+    "author": "patti",
+    "content": "azxcvbnmlkjg sdgfhdhgj rytuyjuk asdfghj"
+} 
+
+
+###
+
+DELETE {{baseUrl}}/66bb6d7d86d21962dcd3a389

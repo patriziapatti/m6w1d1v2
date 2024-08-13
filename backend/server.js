@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import authorRoutes from './routes/authorRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 import cors from 'cors'
 
 const port = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ await mongoose.connect(process.env.MONGODB_CONNECTION_URI).then(()=>{
 server.use(express.json())// tutti i body che invieremo saranno in json
 server.use(cors()) 
 server.use("/authors", authorRoutes)
+server.use("/blogPosts", postRoutes)
 
 
 server.listen(port, ()=>{
