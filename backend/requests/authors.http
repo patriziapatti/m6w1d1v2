@@ -1,0 +1,38 @@
+@baseUrl= http://localhost:5000/authors
+
+GET {{baseUrl}}
+
+###
+
+GET {{baseUrl}}/66b8bb36ee6ef73ac5359373
+
+###
+
+POST {{baseUrl}}
+Content-Type: application/json
+ 
+{
+    "name": "Robi",
+    "surname": "Allocco",
+    "email": "roby@roby.it",
+    "birthDate":  "1986-08-18",
+    "avatar": "robirobi"
+} 
+
+###
+
+PUT {{baseUrl}}/66bb22e42d044254db3bf89d
+Content-Type: application/json
+
+{
+    "name": "Robi",
+    "surname": "Allocco",
+    "email": "roby@roby.it",
+    "birthDate":  "1986-08-18",
+    "avatar": "rbfg"
+} 
+
+
+###
+
+DELETE {{baseUrl}}/66bb22e42d044254db3bf89d
