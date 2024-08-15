@@ -4,7 +4,7 @@ GET {{baseUrl}}
 
 ###
 
-GET {{baseUrl}}/66bb6cd55c7771fd76ce69e3
+GET {{baseUrl}}/66bb6c895c7771fd76ce69e0
 
 ###
 
@@ -12,35 +12,35 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "category": "qazsd",
-    "title": "polki",
+    "category": "9876qws",
+    "title": "9876",
     "cover": "url della cover",
     "readTime": {
-        "value": 3,
+        "value": 1,
         "unit": "min"
     },
-    "author": "pat",
-    "content": "qwsd fgrtplo 12 fnfinftdgv sogttgnrkfn e"
+    "author": "ilop",
+    "content": "123456789"
 } 
 
 ###
 
-PUT {{baseUrl}}/66bb6c895c7771fd76ce69e0
+PUT {{baseUrl}}/66be004854862603acafd837
 Content-Type: application/json
 
 {
-    "category": "qwerty",
-    "title": "asdfghj asdfghj",
+    "category": "0987",
+    "title": "09",
     "cover": "url della cover",
     "readTime": {
-        "value": 10,
+        "value": 2,
         "unit": "min"
     },
-    "author": "patti",
-    "content": "azxcvbnmlkjg sdgfhdhgj rytuyjuk asdfghj"
+    "author": "ilop",
+    "content": "0987654321"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66bb6d7d86d21962dcd3a389
+DELETE {{baseUrl}}/66bdfff854862603acafd834
