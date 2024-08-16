@@ -4,6 +4,7 @@ import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
 
 const BlogList = props => {
+  //  const {posts} = props //metodo per passare posts come props 
   return (
     <Row>
       {posts.map((post, i) => (

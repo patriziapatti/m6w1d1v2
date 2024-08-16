@@ -12,11 +12,10 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "name": "gabriele",
-    "surname": "p",
-    "email": "gabriele@p.com",
-    "birthDate":  "1988-11-14",
-    "avatar": "gbpzz"
+    "name": "Asdasd",
+      "surname": "Fghfgh",
+      "email": "asda@fgha.com",
+      "avatar": "asdfgh"
 } 
 
 ###
@@ -35,4 +34,4 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseUrl}}/66bb0f70c6dddc1c68432f11
+DELETE {{baseUrl}}/66bb6bc948e68f3041959577

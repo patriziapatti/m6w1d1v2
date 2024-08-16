@@ -9,6 +9,7 @@ router.get("/", async (req,res)=>{
     const perPage = req.query.perPage || 3
     try {
         const allAuthors = await Author.find({})
+        .collation({locale: 'it'}) //serve per ignorare maiuscole e minuscole nell'ordine alfabetico del sort
         .sort({name:1, surname:1})
         .skip((page-1)*perPage)
         .limit(perPage)
@@ -77,8 +78,12 @@ router.put("/:id", async (req,res)=>{
 router.delete("/:id", async (req,res)=>{
     const {id} =req.params
     try {
-        await Author.findByIdAndDelete(id)
-        res.status(200).send(`ho eliminato l'autore con id: ${id}`)
+        //se l'id esiste nello schema allora fai la delete
+        if (await Author.exists({_id:id})){
+            await Author.findByIdAndDelete(id)
+            res.status(200).send(`ho eliminato l'autore con id: ${id}`)
+        }else {res.status(404).send({message: `ID ${id} not found`})}
+        
     } catch (error) {
         res.status(404).send({message: `ID ${id} not found`})
     }

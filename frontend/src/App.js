@@ -5,16 +5,13 @@ import Home from "./views/home/Home";
 import Blog from "./views/blog/Blog";
 import NewBlogPost from "./views/new/New";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { loadAuthors, loadPosts} from "./data/fetch";
+import { loadAuthors} from "./data/fetch";
 
 function App() {
-  useEffect(()=> {
-    loadAuthors().then((data => console.log(data)))
-  },[])
+  // useEffect(()=> {
+  //   loadAuthors().then((data => console.log(data)))
+  // },[])
 
-  useEffect(()=>{
-    loadPosts().then((data => console.log(data)))
-  },[])
   return (
     <Router>
       <NavBar />

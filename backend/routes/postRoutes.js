@@ -7,10 +7,11 @@ const router = express.Router()
 // get per richiamare tutti i post
 router.get("/", async (req,res)=>{
     const page = req.query.page || 1
-    const perPage = req.query.perPage || 3
+    const perPage = req.query.perPage || 10
     try {
         const allPosts = await Post.find({})
-        .sort({category:1, title:1})
+        .collation({locale: 'it'}) //serve per ignorare maiuscole e minuscole nell'ordine alfabetico del sort
+        .sort({ title:1, category:1})
         .skip((page-1)*perPage)
         .limit(perPage)
 
