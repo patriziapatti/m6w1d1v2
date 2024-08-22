@@ -6,7 +6,7 @@ import { loadPosts } from "../../data/fetch";
 
 
 const Home = props => {
-  const [posts, setPosts] = useState("")
+  const [posts, setPosts] = useState([])
   useEffect(()=>{
     loadPosts().then(data => setPosts(data.dati))
   },[])

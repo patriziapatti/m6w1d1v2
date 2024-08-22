@@ -1,5 +1,9 @@
 @baseUrl= http://localhost:5000/blogPosts
 
+GET http://localhost:5000/blogPosts?title=ecco
+
+###
+
 GET {{baseUrl}}
 
 ###

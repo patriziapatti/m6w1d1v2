@@ -19,6 +19,7 @@ export const newPost = async (formValue) =>{
         body: JSON.stringify(formValue)
     })
     const data = await res.json()
+    loadPosts()
     return data
 } 
 

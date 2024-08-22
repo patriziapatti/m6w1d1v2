@@ -1,10 +1,9 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import posts from "../../../data/posts.json";
+// import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
 
-const BlogList = props => {
-  //  const {posts} = props //metodo per passare posts come props 
+const BlogList = ({ posts }) => {
   return (
     <Row>
       {posts.map((post, i) => (
