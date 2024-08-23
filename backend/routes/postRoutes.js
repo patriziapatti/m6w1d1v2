@@ -1,5 +1,7 @@
 import express, {json} from 'express';
 import Post from '../models/postSchema.js'
+import uploadCloudinary from '../middleware/uploadCloudinary.js';
+import transport from '../services/mailService.js';
 
 
 const router = express.Router()
@@ -50,6 +52,14 @@ router.post("/", async (req,res)=>{
     try {
         //salva i dati prendendoli nel db , prendendoli dall'istanza
         const newPost = await post.save()
+        //se è andato tutto bene mando la mail
+        await transport.sendMail({
+            from: 'noreply@epicoders.com', // sender address
+            to: newPost.author, // list of receivers
+            subject: "New Post", // Subject line
+            text: "You have created a new blog post!", // plain text body
+            html: "<b>You have created a new blog post!</b>" // html body
+        })
         //invia i dati al database
         res.send(newPost)
     } catch (error) {
@@ -85,4 +95,18 @@ router.delete("/:id", async (req,res)=>{
     }
     
 })
+
+router.patch('/:blogPostId/cover', uploadCloudinary.single('cover'),async (req,res)=>{ //importo il middlware uploadCloudinary
+    const {blogPostId} =req.params
+    try {
+        const post = await Post.findByIdAndUpdate(blogPostId, {cover: req.file.path}, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
+        await post.save();//non è necessario
+        res.status(200).send(post)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+    
+})
+
+
 export default router

@@ -16,20 +16,20 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "category": "9876qws",
-    "title": "9876",
-    "cover": "url della cover",
+    "category": "trepp",
+    "title": "erova",
+    "cover": "url",
     "readTime": {
-        "value": 1,
+        "value": 10,
         "unit": "min"
     },
-    "author": "ilop",
-    "content": "123456789"
+    "author": "patp@gmail.com",
+    "content": "flkjhgffaqwedfgt"
 } 
 
 ###
 
-PUT {{baseUrl}}/66be004854862603acafd837
+PUT {{baseUrl}}/666bb6f5c86d21962dcd3a38f
 Content-Type: application/json
 
 {

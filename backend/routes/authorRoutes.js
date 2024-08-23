@@ -1,5 +1,6 @@
 import express, {json} from 'express';
 import Author from '../models/authorSchema.js'
+import uploadCloudinary from '../middleware/uploadCloudinary.js';
 
 const router = express.Router()
 
@@ -91,4 +92,17 @@ router.delete("/:id", async (req,res)=>{
     }
     
 })
+
+
+router.patch('/:authorId/avatar', uploadCloudinary.single('avatar'),async (req,res)=>{ //importo il middlware uploadCloudinary
+    const {authorId} =req.params
+    try {
+        const author = await Author.findByIdAndUpdate(authorId, {avatar: req.file.path}, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
+        await author.save();//non è necessario
+        res.status(200).send(author)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+    
+})//uso patch per modificare il contenuto sul server di una risorsa che esiste già sul db.
 export default router
