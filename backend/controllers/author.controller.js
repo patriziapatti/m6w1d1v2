@@ -1,22 +1,8 @@
-import express, {json} from 'express';
 import Author from '../models/authorSchema.js'
-import uploadCloudinary from '../middleware/uploadCloudinary.js';
-import { getAuthors, getSingleAuthor, addAuthor, editAuthor, deleteAuthor, patchAuthor } from '../controllers/author.controller.js';
 
-
-const router = express.Router()
-
-router.get('/', getAuthors)
-router.get('/:id',getSingleAuthor)
-router.post('/', addAuthor)
-router.put ('/:id', editAuthor)
-router.delete ('/:id', deleteAuthor)
-router.patch('/:authorId/avatar', uploadCloudinary.single('avatar'), patchAuthor)
-
-// get per richiamare tutti gli autori
-/*router.get("/", async (req,res)=>{
+export const getAuthors = async (req,res)=>{
     const page = req.query.page || 1
-    let perPage = req.query.perPage || 3
+    let perPage = req.query.perPage || 5
     perPage = perPage > 10 ? 5 : perPage
     try {
         const allAuthors = await Author.find({})
@@ -36,23 +22,20 @@ router.patch('/:authorId/avatar', uploadCloudinary.single('avatar'), patchAuthor
         })
     } catch (error) {
         res.status(404).send({message: 'Not Found'})
-    }
-    
-})*/
+    }  
+}
 
-//questa è la get per richiamare un singolo autore tramite id
-/*
-router.get("/:id", async (req,res)=>{
+export const getSingleAuthor = async (req,res)=>{
     const {id} =req.params
     try {
         const author = await Author.findById(id)
         res.status(200).send(author) 
     } catch (error) {
         res.status(404).send({message: 'Not Found'}) 
-    }
-})*/
+    } 
+}
 
-/*router.post("/", async (req,res)=>{
+export const addAuthor = async (req,res)=>{
     //crea un nuova istanza del modello autore con i dati definiti nella parentesi tonde (prendendoli dal body)
     // console.log(req.body)
     const author = new Author (req.body)
@@ -64,10 +47,10 @@ router.get("/:id", async (req,res)=>{
         res.status(200).send(newAuthor)
     } catch (error) {
         res.status(400).send(error)
-    }
-})*/
+    }  
+}
 
-/*router.put("/:id", async (req,res)=>{
+export const editAuthor = async (req,res)=>{
     const {id} =req.params
     try {
         const author = await Author.findByIdAndUpdate(id, req.body, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
@@ -78,9 +61,9 @@ router.get("/:id", async (req,res)=>{
         res.status(400).send(error)
     }
     
-})*/
+}
 
-/*router.delete("/:id", async (req,res)=>{
+export const deleteAuthor = async (req,res)=>{
     const {id} =req.params
     try {
         //se l'id esiste nello schema allora fai la delete
@@ -92,10 +75,9 @@ router.get("/:id", async (req,res)=>{
     } catch (error) {
         res.status(404).send({message: `ID ${id} not found`})
     }
-    
-})*/
+}
 
-/*router.patch('/:authorId/avatar', uploadCloudinary.single('avatar'),async (req,res)=>{ //importo il middlware uploadCloudinary
+export const patchAuthor = async (req,res)=>{ //importo il middlware uploadCloudinary
     const {authorId} =req.params
     try {
         const author = await Author.findByIdAndUpdate(authorId, {avatar: req.file.path}, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
@@ -105,7 +87,4 @@ router.get("/:id", async (req,res)=>{
         res.status(400).send(error)
     }
     
-})//uso patch per modificare il contenuto sul server di una risorsa che esiste già sul db.
-*/
-
-export default router
+}//uso patch per modificare il contenuto sul server di una risorsa che esiste già sul db.

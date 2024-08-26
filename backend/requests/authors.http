@@ -4,7 +4,7 @@ GET {{baseUrl}}
 
 ###
 
-GET {{baseUrl}}/66b37b264b2317729dc8dc17
+GET {{baseUrl}}/66c62ebd23cdebec0a1b54b0
 
 ###
 
@@ -12,26 +12,25 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "name": "pat",
-      "surname": "patt",
-      "email": "patrizia@patti.com",
+    "name": "Martina",
+      "surname": "Patti",
+      "email": "patti@martia.com",
       "avatar": ""
 } 
 
 ###
 
-PUT {{baseUrl}}/66b37b264b2317729dc8dc17
+PUT {{baseUrl}}/66c62f5823cdebec0a1b54be
 Content-Type: application/json
 
 {
-    "name": "Patrizia",
-    "surname": "Patti",
-    "email": "patrizia@patti.com",
-    "birthDate":  "1986-08-18",
-    "avatar": "pattip"
+    "name": "Antonio",
+    "surname": "Fedele",
+    "email": "antonio@fedele.com",
+    "avatar": "antofedele"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66c6251da68dd879ab37a271
+DELETE {{baseUrl}}/66cc956fafc80d5857fbd6a3
