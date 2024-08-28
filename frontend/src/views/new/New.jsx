@@ -21,7 +21,7 @@ const NewBlogPost = props => {
         value: 0,
         unit: ""
     },
-    author: "",
+    author: "66c62e5d23cdebec0a1b54aa",
     content: ""
   }
   const [formValue, setFormValue] = useState(initialFormValue)
@@ -82,7 +82,7 @@ const NewBlogPost = props => {
             Reset
           </Button>
           <Button
-            type="submit"
+            type="button"
             size="lg"
             variant="dark"
             style={{

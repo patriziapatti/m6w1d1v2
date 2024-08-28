@@ -1,4 +1,5 @@
 import Post from '../models/postSchema.js'
+import Author from '../models/authorSchema.js'
 import Comment from '../models/commentSchema.js'
 import transport from '../services/mailService.js';
 
@@ -12,6 +13,7 @@ export const getPost = async (req,res)=>{
         .sort({ title:1, category:1})
         .skip((page-1)*perPage)
         .limit(perPage)
+        .populate('author')
 
         const totalResults = await Post.countDocuments()// mi da il numero totale di documenti
         const totalPages = Math.ceil(totalResults / perPage ) 
@@ -31,6 +33,7 @@ export const getSinglePost = async (req,res)=>{
     const {id} =req.params
     try {
         const post = await Post.findById(id)
+        .populate('author')
         res.send(post) 
     } catch (error) {
         res.status(404).send({message: 'Not Found'})
@@ -53,9 +56,10 @@ export const addPost = async (req,res)=>{
        return res.status(400).send(error) //qui ci vuole il return perchè non devo inviare la mail di post creato con successo
     }
     try {
+        const author = await Author.findById(newPost.author)
         await transport.sendMail({
             from: 'noreply@epicoders.com', // sender address
-            to: newPost.author, // list of receivers
+            to: author.email, // list of receivers
             subject: "New Post", // Subject line
             text: "You have created a new blog post!", // plain text body
             html: "<b>You have created a new blog post!</b>" // html body

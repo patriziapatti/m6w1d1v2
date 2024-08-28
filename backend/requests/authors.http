@@ -1,4 +1,4 @@
-@baseUrl= http://localhost:5000/authors
+@baseUrl= http://localhost:5000/authors?page=2
 
 GET {{baseUrl}}
 
