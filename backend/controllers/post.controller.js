@@ -1,28 +1,8 @@
-import express, {json} from 'express';
 import Post from '../models/postSchema.js'
-import uploadCloudinary from '../middleware/uploadCloudinary.js';
-import {addPost, deletePost, editPost, getPost, getSinglePost, patchPost } from '../controllers/post.controller.js';
-import { createComment, deleteComment, editComment, getComments, getSingleComment } from '../controllers/comment.controller.js';
+import Comment from '../models/commentSchema.js'
+import transport from '../services/mailService.js';
 
-
-const router = express.Router()
-//rotte per i post
-router.get('/', getPost)
-router.get('/:id', getSinglePost)
-router.post ('/',  uploadCloudinary.single('cover'), addPost )
-router.put ('/:id', editPost)
-router.delete ('/:id', deletePost)
-router.patch('/:blogPostId/cover', uploadCloudinary.single('cover'), patchPost)
-
-//rotte per i commenti
-router.post('/:postId/comments',createComment)
-router.get('/:postId/comments', getComments)
-router.get('/:postId/comments/:commentId', getSingleComment)
-router.put('/:postId/comment/:commentId', editComment)
-router.delete('/:postId/comment/:commentId', deleteComment)
-
-// get per richiamare tutti i post
-/*router.get("/", async (req,res)=>{
+export const getPost = async (req,res)=>{
     const page = req.query.page || 1
     let perPage = req.query.perPage || 8
     perPage = perPage > 10 ? 8 : perPage
@@ -45,30 +25,34 @@ router.delete('/:postId/comment/:commentId', deleteComment)
     } catch (error) {
         res.status(404).send({message: 'Not Found'})
     }
-    
-})*/
+}
 
-//questa è la get per richiamare un singolo post tramite id
-/*router.get("/:id", async (req,res)=>{
-        const {id} =req.params
-        try {
-            const post = await Post.findById(id)
-            res.send(post) 
-        } catch (error) {
-            res.status(404).send({message: 'Not Found'})
-        }
-    
-})*/
+export const getSinglePost = async (req,res)=>{
+    const {id} =req.params
+    try {
+        const post = await Post.findById(id)
+        res.send(post) 
+    } catch (error) {
+        res.status(404).send({message: 'Not Found'})
+    }
+}
 
-/*router.post("/", async (req,res)=>{
+export const addPost = async (req,res)=>{
     //crea un nuova istanza del modello autore con i dati definiti nella parentesi tonde (prendendoli dal body)
     // console.log(req.body)
-    const post = new Post (req.body)
+    const post = new Post ({...req.body, cover: req.file.path, readTime: JSON.parse(req.body.readTime)})
+    let newPost
     //res.send("sono la post che crea un nuovo post")
     try {
         //salva i dati prendendoli nel db , prendendoli dall'istanza
-        const newPost = await post.save()
+        newPost = await post.save()
         //se è andato tutto bene mando la mail
+        //invia i dati al database
+        res.send(newPost) //non facciamo il return sennò non fa il try catch successivo
+    } catch (error) {
+       return res.status(400).send(error) //qui ci vuole il return perchè non devo inviare la mail di post creato con successo
+    }
+    try {
         await transport.sendMail({
             from: 'noreply@epicoders.com', // sender address
             to: newPost.author, // list of receivers
@@ -76,14 +60,12 @@ router.delete('/:postId/comment/:commentId', deleteComment)
             text: "You have created a new blog post!", // plain text body
             html: "<b>You have created a new blog post!</b>" // html body
         })
-        //invia i dati al database
-        res.send(newPost)
     } catch (error) {
-        res.status(400).send(error)
+        console.log(error)
     }
-})*/
+}
 
-/*router.put("/:id", async (req,res)=>{
+export const editPost = async (req,res)=>{
     const {id} =req.params
     try {
         const post = await Post.findByIdAndUpdate(id, req.body, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
@@ -94,10 +76,9 @@ router.delete('/:postId/comment/:commentId', deleteComment)
     } catch (error) {
         res.status(400).send(error)
     }
-    
-})*/
+}
 
-/*router.delete("/:id", async (req,res)=>{
+export const deletePost = async (req,res)=>{
     const {id} =req.params
     try {
         if (await Post.exists({_id:id})){
@@ -106,11 +87,10 @@ router.delete('/:postId/comment/:commentId', deleteComment)
         }else{res.status(404).send({message: `ID ${id} not found`})}   
     } catch (error) {
         res.status(404).send({message: `ID ${id} not found`})
-    }
-    
-})*/
+    }  
+}
 
-/*router.patch('/:blogPostId/cover', uploadCloudinary.single('cover'),async (req,res)=>{ //importo il middlware uploadCloudinary
+export const patchPost = async (req,res)=>{ //importo il middlware uploadCloudinary
     const {blogPostId} =req.params
     try {
         const post = await Post.findByIdAndUpdate(blogPostId, {cover: req.file.path}, {new:true}) //new serve per restituire in author l'oggetto appena inserito, altrimenti non lo restituisce
@@ -119,8 +99,6 @@ router.delete('/:postId/comment/:commentId', deleteComment)
     } catch (error) {
         res.status(400).send(error)
     }
-    
-})*/
+}
 
 
-export default router

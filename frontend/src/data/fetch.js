@@ -10,16 +10,21 @@ export const loadPosts = async () =>{
     return data
 }
 
-export const newPost = async (formValue) =>{
+export const newPost = async (formValue,cover) =>{
+    const formData = new FormData()
+    formData.append('cover', cover)
+    formData.append('category', formValue.category)
+    formData.append('title', formValue.title)
+    formData.append('readTime', JSON.stringify(formValue.readTime))
+    formData.append('author', formValue.author)
+    formData.append('content', formValue.content)
     const res= await fetch ('http://localhost:5000/blogPosts', {
-        headers: {
-            "Content-Type": "application/json",
-        },
+        
         method: "POST",
-        body: JSON.stringify(formValue)
+        body: formData
     })
-    const data = await res.json()
-    loadPosts()
+    const data = await res.json() 
+    // loadPosts()
     return data
 } 
 

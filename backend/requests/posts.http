@@ -8,7 +8,7 @@ GET {{baseUrl}}
 
 ###
 
-GET {{baseUrl}}/66bb6c895c7771fd76ce69e0
+GET {{baseUrl}}/66bf209a22b7a3dd39753525
 
 ###
 
@@ -16,35 +16,35 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "category": "trepp",
-    "title": "erova",
-    "cover": "url",
+    "category": "qsfduia35q",
+    "title": "0000000000111",
+    "cover": "",
     "readTime": {
-        "value": 10,
+        "value": 1,
         "unit": "min"
     },
-    "author": "patp@gmail.com",
-    "content": "flkjhgffaqwedfgt"
+    "author": "patrizia@patrizia.com",
+    "content": "sfdhfgjghk"
 } 
 
 ###
 
-PUT {{baseUrl}}/666bb6f5c86d21962dcd3a38f
+PUT {{baseUrl}}/66bb6fe686d21962dcd3a394
 Content-Type: application/json
 
 {
-    "category": "0987",
-    "title": "09",
-    "cover": "url della cover",
+    "category": "epicode",
+    "title": "basta",
+    "cover": "qwert.jpg",
     "readTime": {
-        "value": 2,
+        "value": 1,
         "unit": "min"
     },
-    "author": "ilop",
-    "content": "0987654321"
+    "author": "pp",
+    "content": "basta2"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66be004854862603acafd837
+DELETE {{baseUrl}}/66cf1cd91e0ecb57458317ca
