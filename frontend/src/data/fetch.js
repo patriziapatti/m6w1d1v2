@@ -28,33 +28,24 @@ export const newPost = async (formValue,cover) =>{
     return data
 } 
 
-// export const postAuthors = async () =>{
-//     const res = await fetch ('http://localhost:5000/authors',{
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         method: "POST",
-//         body: JSON.stringify({
-//             name: "patri",
-//             surname: "patt",
-//             email: "patri@patt.com",
-//             avatar: "qazxcvb"
-//         })
-//     })
-//     const data = await res.json();
-//     return data
-//}
+export const login = async (formValue) => {
+    const res = await fetch('http://localhost:5000/auth/login', {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: 'POST',
+        body:JSON.stringify (formValue)
+    })
+    const data = await res.json();
+    return data
+}
 
-// export const putAuthors = async (id) =>{
-//     const res = await fetch (`http://localhost:5000/authors/${id}`,{
-//         headers:{
-//             "Content-Type": "application/json",
-//         },
-//         method: "PUT",
-//         body: JSON.stringify({
-//             email: "patrizia@aizirtap.com",
-//         })
-//     })
-//     const data = await res.json()
-//     return data
-// }
+export const me = async() =>{
+    const res = await fetch('http://localhost:5000/auth/me',{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    const data = await res.json();
+    return data
+}

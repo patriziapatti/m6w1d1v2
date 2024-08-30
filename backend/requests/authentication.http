@@ -1,14 +1,14 @@
-@baseUrl= http://localhost:5000
+@baseUrl= http://localhost:5000/auth
 
 POST {{baseUrl}}/register
 Content-Type: application/json
  
 {
-    "name": "Sara",
-      "surname": "Casotto",
-      "email": "sara@casotto.com",
+    "name": "Samuele",
+      "surname": "Calabrese",
+      "email": "samu@calab.com",
       "avatar": "",
-      "password":"poiuytr"
+      "password":"1234567890"
 } 
 
 ###
@@ -16,11 +16,11 @@ POST {{baseUrl}}/login
 Content-Type: application/json
  
 {
-      "email": "sara@casotto.com",
-      "password":"poiuytr"
+      "email": "samu@calab.com",
+      "password":"1234567890"
 } 
 
 ###
 
 GET {{baseUrl}}/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDFkMzZkZTI1ODk3MTg4ZGI5YzhmYiIsImlhdCI6MTcyNTAyODQzNCwiZXhwIjoxNzI1MDMyMDM0fQ.-QN3v9K-1BPH1Ng1pEiTJpV6r7Jay0FD_ew3oaDTY_8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDFmZTM0NmI0NWEwYTE5NDM5Yjg5ZiIsImlhdCI6MTcyNTAzODUzOCwiZXhwIjoxNzI1MDQyMTM4fQ.DF3JIL_H0UztsdXz3-Kv_Q6KLHbIBsq51vERu0DGscY

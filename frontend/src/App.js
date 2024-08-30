@@ -6,6 +6,7 @@ import Blog from "./views/blog/Blog";
 import NewBlogPost from "./views/new/New";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { loadAuthors, loadPosts} from "./data/fetch";
+import AuthorContextProvider from "./context/AuthorContextProvider";
 
 function App() {
   // useEffect(()=> {
@@ -16,6 +17,7 @@ function App() {
   },[])
 
   return (
+    <AuthorContextProvider>
     <Router>
       <NavBar />
       <Routes>
@@ -25,6 +27,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </AuthorContextProvider>
   );
 }
 

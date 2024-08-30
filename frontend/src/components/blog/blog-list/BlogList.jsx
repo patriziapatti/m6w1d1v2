@@ -1,9 +1,14 @@
-import React from "react";
 import { Col, Row } from "react-bootstrap";
 // import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
+import { loadPosts } from "../../../data/fetch";
+import React, { useEffect, useState } from "react";
 
-const BlogList = ({ posts }) => {
+const BlogList = () => {
+  const [posts, setPosts] = useState([])
+  useEffect(()=>{
+    loadPosts().then(data => setPosts(data.dati))
+  },[])
   return (
     <Row>
       {posts.map((post, i) => (

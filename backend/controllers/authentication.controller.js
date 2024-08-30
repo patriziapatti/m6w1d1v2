@@ -23,7 +23,7 @@ export const register = async (req,res) =>{
 
 export const login = async (req,res) => {
     //cercare la mail nel db
-    const author = await AuthorR.findOne({email: req.body.email})
+    const author = await AuthorR.findOne({email: req.body.email}).select('+password')//la select mi fa prendere tutto più il campo password
     //se non trova la mail
     if(!author) return res.status(401).send('Incorrect Credentials')
     //se trova la mail
@@ -48,5 +48,5 @@ export const login = async (req,res) => {
 }
 
 export const me = async(req,res) =>{
-    return res.send(req.author)
+    return res.send(req.loggedAuthor)
 }

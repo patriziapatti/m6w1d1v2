@@ -24,7 +24,7 @@ server.use(morgan("dev"))// è un middleware che mi mostra tutti i log delle ric
 server.use(helmet ())
 server.use("/authors", authorRoutes)
 server.use("/blogPosts", postRoutes)
-server.use("/",authenticationRouter)
+server.use("/auth",authenticationRouter)
 
 
 server.listen(port, ()=>{

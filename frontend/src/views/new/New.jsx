@@ -21,7 +21,7 @@ const NewBlogPost = props => {
         value: 0,
         unit: ""
     },
-    author: "66c62e5d23cdebec0a1b54aa",
+    author: "66d1cf98c91a0ac1fe5d7b1a",
     content: ""
   }
   const [formValue, setFormValue] = useState(initialFormValue)

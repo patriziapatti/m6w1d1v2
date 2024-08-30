@@ -17,7 +17,7 @@ export default (req, res, next) =>{
         if (err) return res.status(401).send();
 
         //recuperiamo i dati dell'utente dal database escludendo il campo password
-        const author = await AuthorR.findById(payload.authorId).select('-password');
+        const author = await AuthorR.findById(payload.authorId)//.select('-password');
 
         //l'utente potrebbe aver eliminato l'account nel frattempo quindi non esistere più nel db
         if (!author) return res.status(401).send();
@@ -28,5 +28,6 @@ export default (req, res, next) =>{
         console.log(author)
 
         //chiamiamo il prossimo middleware
+        next()
     })
 }
