@@ -1,5 +1,5 @@
 import express, {json} from 'express';
-import Author from '../models/authorSchema.js'
+import AuthorR from '../models/authorRegSchema.js'
 import uploadCloudinary from '../middleware/uploadCloudinary.js';
 import { getAuthors, getSingleAuthor, addAuthor, editAuthor, deleteAuthor, patchAuthor } from '../controllers/author.controller.js';
 

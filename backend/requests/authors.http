@@ -1,4 +1,4 @@
-@baseUrl= http://localhost:5000/authors?page=2
+@baseUrl= http://localhost:5000/authors
 
 GET {{baseUrl}}
 
@@ -12,10 +12,11 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "name": "Martina",
+    "name": "Patrizia",
       "surname": "Patti",
-      "email": "patti@martia.com",
-      "avatar": ""
+      "email": "patti@patti.com",
+      "avatar": "",
+      "password":"asdqwe"
 } 
 
 ###
@@ -33,4 +34,4 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseUrl}}/66ccdb76951f71501fbfacee
+DELETE {{baseUrl}}/66d1c325d4400220a5f7762f

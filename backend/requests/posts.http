@@ -16,8 +16,8 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "category": "categoria1",
-    "title": "00",
+    "category": "categoria2",
+    "title": "001",
     "cover": "",
     "readTime": {
         "value": 1,

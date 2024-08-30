@@ -6,6 +6,7 @@ import postRoutes from './routes/postRoutes.js'
 import cors from 'cors'
 import morgan from 'morgan';
 import helmet from 'helmet'
+import authenticationRouter from './routes/authenticationRoutes.js';
 
 const port = process.env.PORT || 5000;
 
@@ -23,6 +24,7 @@ server.use(morgan("dev"))// è un middleware che mi mostra tutti i log delle ric
 server.use(helmet ())
 server.use("/authors", authorRoutes)
 server.use("/blogPosts", postRoutes)
+server.use("/",authenticationRouter)
 
 
 server.listen(port, ()=>{

@@ -1,5 +1,6 @@
 import Post from '../models/postSchema.js'
 import Author from '../models/authorSchema.js'
+import AuthorR from '../models/authorRegSchema.js'
 import Comment from '../models/commentSchema.js'
 import transport from '../services/mailService.js';
 
@@ -44,6 +45,7 @@ export const addPost = async (req,res)=>{
     //crea un nuova istanza del modello autore con i dati definiti nella parentesi tonde (prendendoli dal body)
     // console.log(req.body)
     const post = new Post ({...req.body, cover: req.file.path, readTime: JSON.parse(req.body.readTime)})
+    // const post = new Post (req.body)
     let newPost
     //res.send("sono la post che crea un nuovo post")
     try {
@@ -56,7 +58,7 @@ export const addPost = async (req,res)=>{
        return res.status(400).send(error) //qui ci vuole il return perchè non devo inviare la mail di post creato con successo
     }
     try {
-        const author = await Author.findById(newPost.author)
+        const author = await AuthorR.findById(newPost.author)
         await transport.sendMail({
             from: 'noreply@epicoders.com', // sender address
             to: author.email, // list of receivers

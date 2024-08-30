@@ -24,7 +24,7 @@ const postSchema = new Schema(
         },
         author: {
             type: Schema.Types.ObjectId,
-            ref: 'Author',
+            ref: 'AuthorR',
         },
         content: {
             type: String,
