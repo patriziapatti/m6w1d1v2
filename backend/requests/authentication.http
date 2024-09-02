@@ -4,11 +4,11 @@ POST {{baseUrl}}/register
 Content-Type: application/json
  
 {
-    "name": "Samuele",
-      "surname": "Calabrese",
-      "email": "samu@calab.com",
+    "name": "Dario",
+      "surname": "Patti",
+      "email": "dario@patti.com",
       "avatar": "",
-      "password":"1234567890"
+      "password":"12345"
 } 
 
 ###
@@ -16,8 +16,8 @@ POST {{baseUrl}}/login
 Content-Type: application/json
  
 {
-      "email": "samu@calab.com",
-      "password":"1234567890"
+      "email": "patrizia@patti.com",
+      "password":"qwerty1234"
 } 
 
 ###

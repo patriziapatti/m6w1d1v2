@@ -2,6 +2,7 @@ import AuthorR from '../models/authorRegSchema.js'
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
+
 export const register = async (req,res) =>{
     //verificare che la mail non sia già utilizzata
     const author = await AuthorR.findOne({email: req.body.email});
@@ -13,7 +14,7 @@ export const register = async (req,res) =>{
         surname: req.body.surname,
         email: req.body.email,
         password: await bcrypt.hash(req.body.password, 10),
-        avatar: req.body.avatar ? req.body.avatar : "https://picsum.photos/40",
+        avatar: req.file ? req.file.path : "https://picsum.photos/40",
         verifiedAt: new Date()
     });
 
@@ -50,3 +51,9 @@ export const login = async (req,res) => {
 export const me = async(req,res) =>{
     return res.send(req.loggedAuthor)
 }
+
+
+// export const callBackGoogle = async (req, res) =>{
+//     //qui facciamo il redirect al front end passandogli il jwt creato in passport nella query string
+//     res.redirect(`http://localhost:3000/login?token=${req.user.token}`) //io devo levare login perchè ho il login in homepage
+// }

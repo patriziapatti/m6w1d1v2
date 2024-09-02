@@ -1,6 +1,6 @@
 @baseUrl= http://localhost:5000/blogPosts
 
-GET http://localhost:5000/blogPosts?title=maledetti
+GET http://localhost:5000/blogPosts?title=porco
 
 ###
 
@@ -47,4 +47,4 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseUrl}}/66cf1cd91e0ecb57458317ca
+DELETE {{baseUrl}}/66d57add5d0f0e40709ec517

@@ -49,3 +49,28 @@ export const me = async() =>{
     const data = await res.json();
     return data
 }
+
+export const register = async (regFormValue, avatar) => {
+    console.log(regFormValue)
+    const formData = new FormData()
+    formData.append('avatar', avatar)
+    formData.append('name', regFormValue.name)
+    formData.append('surname', regFormValue.surname)
+    formData.append('email', regFormValue.email)
+    formData.append('password', regFormValue.password)
+    console.log(formData)
+    try {
+        const res = await fetch('http://localhost:5000/auth/register', {
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            method: 'POST',
+            body:formData
+        })
+        const data = await res.json();
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+    
+}

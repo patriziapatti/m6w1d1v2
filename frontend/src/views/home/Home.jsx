@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form';
 import { login } from "../../data/fetch";
 
 
-
-
 const Home = props => {
   const {token, setToken} = useContext(AuthorContext)
   const [show, setShow] = useState(false);
@@ -19,6 +17,7 @@ const Home = props => {
   const handleShow = () => setShow(true);
   const [formValue, setFormValue] = useState({email:"", password:""})
 
+  
   const handleChange = (event) =>{
     setFormValue({
       ...formValue, 
@@ -52,7 +51,7 @@ const Home = props => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" onChange={handleChange} placeholder="la tua password" />
+        <Form.Control type="password" name="password" onChange={handleChange} placeholder="your password" />
       </Form.Group>
       </Form>
       </Modal.Body>
