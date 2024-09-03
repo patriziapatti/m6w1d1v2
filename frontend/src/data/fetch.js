@@ -29,15 +29,24 @@ export const newPost = async (formValue,cover) =>{
 } 
 
 export const login = async (formValue) => {
-    const res = await fetch('http://localhost:5000/auth/login', {
-        headers: {
-            "Content-Type": "application/json",
-        },
-        method: 'POST',
-        body:JSON.stringify (formValue)
-    })
-    const data = await res.json();
-    return data
+    try {
+        const res = await fetch('http://localhost:5000/auth/login', {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: 'POST',
+            body:JSON.stringify (formValue)
+        })
+        if(res.ok){
+            const data = await res.json();
+            return data
+        }else {const errorData = await res.json()
+            return {error: errorData.message || 'Errore di login'}
+        }
+         
+    } catch (error) {
+        return {error: 'Errore, riporva più tardi'} 
+    }    
 }
 
 export const me = async() =>{
@@ -46,12 +55,15 @@ export const me = async() =>{
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     })
+    if(!res.ok){
+        throw new Error(res.status)
+    }
     const data = await res.json();
     return data
 }
 
 export const register = async (regFormValue, avatar) => {
-    console.log(regFormValue)
+    // console.log(regFormValue)
     const formData = new FormData()
     formData.append('avatar', avatar)
     formData.append('name', regFormValue.name)

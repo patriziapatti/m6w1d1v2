@@ -1,28 +1,58 @@
 import GoogleStrategy from 'passport-google-oauth20'
-import { callBackGoogle } from '../controllers/authentication.controller'
+// import { callbackGoogle } from '../controllers/authentication.controller'
+import AuthorR from '../models/authorRegSchema.js'
+import jwt from 'jsonwebtoken'
+import "dotenv/config";
 
 
 const googleStrategy = new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-    callBackUrl:process.env.GOOGLE_CALLBACK
-},
+    // callbackUrl:`${process.env.HOST}:${process.env.PORT}${process.env.GOOGLE_CALLBACK}`
+    callbackURL:process.env.GOOGLE_CALLBACK
+  },
 
-function(accessToken, refreshToken, profile, passportNext) {
-  // oggetto profile: {json:{
+async function(accessToken, refreshToken, profile, passportNext) {//i primi due non ci servono, il profile ci serve e poi passportNext lo chiamiamo noi così, sarebbe la callback
+  // oggetto profile: 
+  //  {_json:{
   //   given_name:Pinco ,
   //   family_name: Pallino,
   //   email: email@email,
-  //   sub: 12345678
+  //   sub: 12345678 //è un id di google
   // }}
-  console.log(profile)
-    //nel db cherchiamo l'utente
+  console.log(profile)//nel profile ci viene passato quello che ho scritto sopra nell'oggetto
     
+  //nel db cherchiamo l'utente
+    const {given_name: name, family_name: surname ,email, sub:googleId, picture: avatar}= profile._json
+    let author = await AuthorR.findOne({ googleId })
     //se non c'è lo creiamo
+    if (!author){
+      const newAuthor = new AuthorR({
+        googleId,
+        name,
+        surname,
+        email,
+        avatar,
+      })
+      author = await newAuthor.save()
+    }
+    //TODO: ora sarebbe il momento di scrivere la funzione per il jwt, noi facciamo copia incolla da quella usata dal controller
+    //creiamo il jwt per l'utente
 
-    //chiamiamo il prossimo middlewere
+    jwt.sign(
+      {authorId: author.id},
+      process.env.JWT_SECRET,
+      {
+          expiresIn: '1h'
+      },
+      (err, jwtToken) =>{
+          if (err) return res.status(500).send();
 
-}
+          //chiamiamo il prossimo middlewere di passport
+          return passportNext(null ,{jwtToken})//passportNext ha 2 argomenti il primo per la gestione degli errori e il secondo è 'user' ovvero l'oggetto che ci da google e usiamo nel redirect del controller
+      }
+    )
+  }
 )
 
 export default googleStrategy

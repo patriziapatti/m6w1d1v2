@@ -1,6 +1,6 @@
 @baseUrl= http://localhost:5000/blogPosts
 
-GET http://localhost:5000/blogPosts?title=porco
+GET http://localhost:5000/blogPosts?title=qwer
 
 ###
 
@@ -16,14 +16,14 @@ POST {{baseUrl}}
 Content-Type: application/json
  
 {
-    "category": "categoria2",
-    "title": "001",
+    "category": "categoria3",
+    "title": "post di mauro",
     "cover": "",
     "readTime": {
         "value": 1,
         "unit": "min"
     },
-    "author": "66c62ebd23cdebec0a1b54b0",
+    "author": "66d1cfddc91a0ac1fe5d7b23",
     "content": "0001"
 } 
 
@@ -47,4 +47,4 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseUrl}}/66d57add5d0f0e40709ec517
+DELETE {{baseUrl}}/66d57b825d0f0e40709ec525

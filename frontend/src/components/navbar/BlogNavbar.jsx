@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Navbar, Modal, Form } from "react-bootstrap";
+import { Button, Container, Navbar, Modal, Form, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles.css";
@@ -9,7 +9,8 @@ import {register} from '../../data/fetch'
  
 const NavBar = props => {
   const {token} = useContext(AuthorContext)
-
+  const {authorInfo} = useContext(AuthorContext)
+  console.log(authorInfo)
   const [showReg, setShowReg] = useState(false);
   const handleCloseReg = () => setShowReg(false);
   const handleShowReg = () => setShowReg(true)
@@ -31,15 +32,18 @@ const NavBar = props => {
       [event.target.name] : event.target.value
     })
   }
+
   const handleChangeImage = (event) =>{
     // handleChangeRegistration(event)
     setAvatar(event.target.files[0])
   }
-
+  
   const handleRegister = async () =>{
     const res = await register(regFormValue, avatar)
     console.log(res)
     handleCloseReg()
+    setRegFormValue(initialRegistrationFormValue)
+    // alert('Registrazione effettuata')
   }
 
   return (
@@ -105,7 +109,11 @@ const NavBar = props => {
           </svg>
           Nuovo Articolo
         </Button>}
-      </Container>
+      </Container> 
+      {token && <Button className="ms-2 me-4" variant="primary">
+        Logout
+      </Button> }
+      {authorInfo && <Image src={authorInfo.avatar}  className="authorAvatar me-4" />} 
     </Navbar>
   );
 };

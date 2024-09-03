@@ -14,13 +14,13 @@ export default (req, res, next) =>{
     //verificare la firma del token
     jwt.verify(jwtToken, process.env.JWT_SECRET, async(err, payload)=>{
         //errore: probabilmente il token è stato manomesso
-        if (err) return res.status(401).send();
+        if (err) return res.status(401).send('token manomesso');
 
         //recuperiamo i dati dell'utente dal database escludendo il campo password
         const author = await AuthorR.findById(payload.authorId)//.select('-password');
 
         //l'utente potrebbe aver eliminato l'account nel frattempo quindi non esistere più nel db
-        if (!author) return res.status(401).send();
+        if (!author) return res.status(401).send('autore eliminato');
 
         //aggiungiamo i dati dell'utente loggato all'oggetto req in maniera da
         //essere utilizzabili dai middlwares successivi in caso ne avessero bisogno

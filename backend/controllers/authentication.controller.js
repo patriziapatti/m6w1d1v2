@@ -1,6 +1,7 @@
 import AuthorR from '../models/authorRegSchema.js'
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+// import { token } from 'morgan';
 
 
 export const register = async (req,res) =>{
@@ -53,7 +54,12 @@ export const me = async(req,res) =>{
 }
 
 
-// export const callBackGoogle = async (req, res) =>{
-//     //qui facciamo il redirect al front end passandogli il jwt creato in passport nella query string
-//     res.redirect(`http://localhost:3000/login?token=${req.user.token}`) //io devo levare login perchè ho il login in homepage
-// }
+
+export const callbackGoogle = async (req, res) =>{
+    console.log(req)
+    //qui facciamo il redirect al front end passandogli il jwt creato in passport nella query string
+    // res.redirect(`http://localhost:3000/login?token=${req.user.token}`) //io devo levare login perchè ho il login in homepage
+    res.redirect (`http://localhost:3000?token=${req.user.jwtToken}`) //il token ce lo aggiiunge passport nell' oggetto della richiesta
+    // e l'oggetto di passport si chiama user (sempre)
+    //l'utente autenticato verrà aggiunto in questo oggetto chiamato user
+}

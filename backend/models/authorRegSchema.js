@@ -2,6 +2,7 @@ import {model, Schema} from 'mongoose'
 
 const authorRegSchema = new Schema(
     {
+        googleId: String,
         name: {
             type: String,
             required: true,
@@ -19,7 +20,6 @@ const authorRegSchema = new Schema(
         },
         password: {
             type: String,
-            required: true,
             select: false, // fa in modo che non venga mai selezionata la password        
 
         },

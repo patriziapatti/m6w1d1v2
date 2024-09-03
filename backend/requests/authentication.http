@@ -24,3 +24,7 @@ Content-Type: application/json
 
 GET {{baseUrl}}/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDFmZTM0NmI0NWEwYTE5NDM5Yjg5ZiIsImlhdCI6MTcyNTAzODUzOCwiZXhwIjoxNzI1MDQyMTM4fQ.DF3JIL_H0UztsdXz3-Kv_Q6KLHbIBsq51vERu0DGscY
+
+###
+
+DELETE {{baseUrl}}/66d6d25431572436f6eb8ea4

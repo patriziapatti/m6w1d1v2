@@ -21,17 +21,17 @@ Content-Type: application/json
 
 ###
 
-PUT {{baseUrl}}/66d48306f6888f55e5588bb2
+PUT {{baseUrl}}/66d1cfc7c91a0ac1fe5d7b20
 Content-Type: application/json
 
 {
-    "name": "Patrizia",
-    "surname": "Patti",
-    "email": "patizia@patti.com",
-    "password": "qwerty1234"
+    "name": "Andrea",
+    "surname": "Ruocco",
+    "email": "andrea@ruocco.com",
+    "password": "andrearuocco"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66d579655d0f0e40709ec504
+DELETE {{baseUrl}}/66d6ecc31ae1ed23e0c88f70

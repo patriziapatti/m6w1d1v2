@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import helmet from 'helmet'
 import authenticationRouter from './routes/authenticationRoutes.js';
 import passport from 'passport';
+import googleStrategy from './config/passport.config.js';
 // import GoogleStrategy from './config/passport.config.js';
 
 const port = process.env.PORT || 5000;
@@ -15,7 +16,7 @@ const port = process.env.PORT || 5000;
 //creo il server
 const server = express()
 
-// passport.use('google', GoogleStrategy)//non è un middleware ma serve per dire a passport di usare la strategia
+passport.use('google', googleStrategy)//non è un middleware ma serve per dire a passport di usare la strategia
 
 //collegamento al db
 await mongoose.connect(process.env.MONGODB_CONNECTION_URI).then(()=>{
