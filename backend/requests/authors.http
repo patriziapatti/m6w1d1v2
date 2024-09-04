@@ -1,37 +1,42 @@
 @baseUrl= http://localhost:5000/authors
 
 GET {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
-GET {{baseUrl}}/66d48306f6888f55e5588bb2
+GET {{baseUrl}}/66d83a30ef402c69f0445762
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
 POST {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
  
 {
-    "name": "Martina",
-      "surname": "Patti",
-      "email": "martina@patti.com",
+    "name": "Pina",
+      "surname": "Pini",
+      "email": "pina@pini.com",
       "avatar": "",
-      "password":"qwerty12345"
+      "password":"12345678"
 } 
 
 ###
 
-PUT {{baseUrl}}/66d1cfc7c91a0ac1fe5d7b20
+PUT {{baseUrl}}/66d83a30ef402c69f0445762
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
 
 {
-    "name": "Andrea",
-    "surname": "Ruocco",
-    "email": "andrea@ruocco.com",
-    "password": "andrearuocco"
+    "name": "Pina",
+      "surname": "Pinipini",
+      "email": "pina@pini.com",
+      "password":"12345678"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66d6ecc31ae1ed23e0c88f70
+DELETE {{baseUrl}}/66d6dc6e1ae1ed23e0c88f64
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k

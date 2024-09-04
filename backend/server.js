@@ -9,6 +9,7 @@ import helmet from 'helmet'
 import authenticationRouter from './routes/authenticationRoutes.js';
 import passport from 'passport';
 import googleStrategy from './config/passport.config.js';
+import authorization from './middleware/authorization.js';
 // import GoogleStrategy from './config/passport.config.js';
 
 const port = process.env.PORT || 5000;
@@ -27,8 +28,8 @@ server.use(express.json())// è un middleware che ci dice tutti i body che invie
 server.use(cors()) // è un middleware che consente la connessione tra backend e frontend
 server.use(morgan("dev"))// è un middleware che mi mostra tutti i log delle richieste
 server.use(helmet ())//middleware che ci da la sicurezza per il backend
-server.use("/authors", authorRoutes)
-server.use("/blogPosts", postRoutes)
+server.use("/authors",authorization, authorRoutes)
+server.use("/blogPosts",authorization, postRoutes)
 server.use("/auth",authenticationRouter)
 
 

@@ -5,7 +5,11 @@
 // }
 
 export const loadPosts = async () =>{
-    const res = await fetch ('http://localhost:5000/blogPosts')
+    const res = await fetch ('http://localhost:5000/blogPosts',{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
     const data = await res.json();
     return data
 }
@@ -19,7 +23,9 @@ export const newPost = async (formValue,cover) =>{
     formData.append('author', formValue.author)
     formData.append('content', formValue.content)
     const res= await fetch ('http://localhost:5000/blogPosts', {
-        
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },        
         method: "POST",
         body: formData
     })

@@ -1,50 +1,55 @@
 @baseUrl= http://localhost:5000/blogPosts
 
-GET http://localhost:5000/blogPosts?title=qwer
-
+GET http://localhost:5000/blogPosts?title=maledetti
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 ###
 
 GET {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
-GET {{baseUrl}}/66bf209a22b7a3dd39753525
+GET {{baseUrl}}/66d705b465e41fed284b3864
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
 POST {{baseUrl}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
  
 {
-    "category": "categoria3",
-    "title": "post di mauro",
+    "category": "categoria1",
+    "title": "post di Anto",
     "cover": "",
     "readTime": {
-        "value": 1,
+        "value": 2,
         "unit": "min"
     },
-    "author": "66d1cfddc91a0ac1fe5d7b23",
-    "content": "0001"
+    "author": "66d1cfb0c91a0ac1fe5d7b1d",
+    "content": "sono il post di Antonio"
 } 
 
 ###
 
-PUT {{baseUrl}}/66bb6fe686d21962dcd3a394
+PUT {{baseUrl}}/66d5eab2f7ae9522c9639e77
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
 
 {
-    "category": "epicode",
-    "title": "basta",
-    "cover": "qwert.jpg",
+    "category": "Categoria 2",
+    "title": "qwertyzzaaaa",
+    "cover": "https://res.cloudinary.com/dtqjogzbd/image/upload/v1725295293/epicode/qu3spz7bsjjcvndintgs.jpg",
     "readTime": {
-        "value": 1,
+        "value": 10,
         "unit": "min"
     },
-    "author": "pp",
-    "content": "basta2"
+    "author": "66d48349f6888f55e5588bb7",
+    "content": "bastaaaaaaaa"
 } 
 
 
 ###
 
-DELETE {{baseUrl}}/66d57b825d0f0e40709ec525
+DELETE {{baseUrl}}/66d8321f2dd8c1adfb1009fc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k

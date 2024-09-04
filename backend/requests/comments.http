@@ -3,31 +3,35 @@
 
 ###
 
-GET {{baseUrl}}/66cf6806a12e681bf2c58dc1/comments
+GET {{baseUrl}}/66d705b465e41fed284b3864/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
-GET {{baseUrl}}/66cf6806a12e681bf2c58dc1/comments/66cf7267a0e9a42e416ccba1
+GET {{baseUrl}}/66d705b465e41fed284b3864/comments/66d835c588a0be306fdcab14
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
-POST {{baseUrl}}/66cf6806a12e681bf2c58dc1/comments
+POST {{baseUrl}}/66d705b465e41fed284b3864/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
  
 {
-    "content": "quinto commento"
+    "content": "commento che eliminerò"
 } 
 
 ###
 
-PUT {{baseUrl}}/66cf6806a12e681bf2c58dc1/comment/66cf7254a0e9a42e416ccb9d
+PUT {{baseUrl}}/66d705b465e41fed284b3864/comment/66d835c588a0be306fdcab14
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 Content-Type: application/json
  
 {
-    "content": "cambio il nuovo commento2"
+    "content": "cambio il commento"
 } 
 
 ###
 
-DELETE {{baseUrl}}/66cf6806a12e681bf2c58dc1/comment/66cf7278a0e9a42e416ccba7
-
+DELETE {{baseUrl}}/66d705b465e41fed284b3864/comment/66d8369088a0be306fdcab31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k

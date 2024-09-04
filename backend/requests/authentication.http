@@ -23,7 +23,7 @@ Content-Type: application/json
 ###
 
 GET {{baseUrl}}/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDFmZTM0NmI0NWEwYTE5NDM5Yjg5ZiIsImlhdCI6MTcyNTAzODUzOCwiZXhwIjoxNzI1MDQyMTM4fQ.DF3JIL_H0UztsdXz3-Kv_Q6KLHbIBsq51vERu0DGscY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
 
 ###
 
