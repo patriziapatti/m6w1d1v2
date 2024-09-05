@@ -4,8 +4,21 @@
 //     return data
 // }
 
+import { useNavigate } from "react-router-dom";
+
 export const loadPosts = async () =>{
     const res = await fetch ('http://localhost:5000/blogPosts',{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    const data = await res.json();
+    return data
+}
+
+export const loadSinglePost = async (paramsId) =>{
+    console.log(paramsId)
+    const res = await fetch (`http://localhost:5000/blogPosts/${paramsId}`, {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import BlogItem from "../blog-item/BlogItem";
 import { loadPosts } from "../../../data/fetch";
 import React, { useEffect, useState } from "react";
+import SingleBlogPost from "../SingleBlogPost";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([])
@@ -20,6 +21,7 @@ const BlogList = () => {
           }}
         >
           <BlogItem key={post.title} {...post} />
+          {/* <SingleBlogPost key={post.title} {...post}/> */}
         </Col>
       ))}
     </Row>

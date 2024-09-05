@@ -15,6 +15,7 @@ router.put ('/:id', editPost)
 router.delete ('/:id', deletePost)
 router.patch('/:blogPostId/cover', uploadCloudinary.single('cover'), patchPost)
 
+
 //rotte per i commenti
 router.post('/:postId/comments',createComment)
 router.get('/:postId/comments', getComments)

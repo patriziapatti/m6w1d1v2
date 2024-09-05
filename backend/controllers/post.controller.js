@@ -6,8 +6,8 @@ import transport from '../services/mailService.js';
 
 export const getPost = async (req,res)=>{
     const page = req.query.page || 1
-    let perPage = req.query.perPage || 8
-    perPage = perPage > 10 ? 8 : perPage
+    let perPage = req.query.perPage || 12
+    perPage = perPage > 12 ? 10 : perPage
     try {
         const allPosts = await Post.find(req.query.title? {title: {$regex: req.query.title ,$options: "i"}}: {}) //il find sulla ricerca di un post con il titolo
         .collation({locale: 'it'}) //serve per ignorare maiuscole e minuscole nell'ordine alfabetico del sort
@@ -108,3 +108,12 @@ export const patchPost = async (req,res)=>{ //importo il middlware uploadCloudin
 }
 
 
+// export const getPostSingleAuthor = async (req,res) =>{
+//     const {authorId} = req.params
+//     try {
+//         const postBySingleAuthor = await Post.find({author: authorId})
+//         res.status(200).send(postBySingleAuthor)
+//     } catch (error) {
+//         res.status(400).send("Not Found")
+//     }
+// }

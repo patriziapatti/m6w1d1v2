@@ -1,4 +1,5 @@
 import AuthorR from '../models/authorRegSchema.js'
+import Post from '../models/postSchema.js'
 
 export const getAuthors = async (req,res)=>{
     const page = req.query.page || 1
@@ -88,3 +89,18 @@ export const patchAuthor = async (req,res)=>{ //importo il middlware uploadCloud
     }
     
 }//uso patch per modificare il contenuto sul server di una risorsa che esiste già sul db.
+
+export const getSingleAuthorPosts = async (req,res) =>{
+    const {id} = req.params
+    try {
+    const authorExists = await AuthorR.findById(id)
+    if(!authorExists){
+        return res.status(404).send({message: 'Author not found'})
+    }
+    const postBySingleAuthor = await Post.find({author: id}) 
+    res.send(postBySingleAuthor)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}

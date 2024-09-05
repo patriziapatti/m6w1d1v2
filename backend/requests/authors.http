@@ -1,7 +1,7 @@
 @baseUrl= http://localhost:5000/authors
 
 GET {{baseUrl}}
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDZjNzkyNDM5N2ZiYjFlNDI0YjNlYyIsImlhdCI6MTcyNTQ3OTE0MCwiZXhwIjoxNzI1NTIyMzQwfQ._b0ZEPhc8zCAfSDCeaqSSsiA7RBlbt_DYS4j0wYTQBM
 
 ###
 
@@ -35,8 +35,12 @@ Content-Type: application/json
       "password":"12345678"
 } 
 
-
 ###
 
 DELETE {{baseUrl}}/66d6dc6e1ae1ed23e0c88f64
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDQ4MzQ5ZjY4ODhmNTVlNTU4OGJiNyIsImlhdCI6MTcyNTQ0NjM0NSwiZXhwIjoxNzI1NDQ5OTQ1fQ.3_UhhvtVc7b0m095YE9KP6O-k8T3aRwSWX4mt6mxp2k
+
+###
+
+GET {{baseUrl}}/66d6c7924397fbb1e424b3ec/blogPosts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDZjNzkyNDM5N2ZiYjFlNDI0YjNlYyIsImlhdCI6MTcyNTU0Nzc1NywiZXhwIjoxNzI1NTkwOTU3fQ.N8f1qTsRjXGXvLCidww9_h2OBJfETTk1TCbbzDHHigc
