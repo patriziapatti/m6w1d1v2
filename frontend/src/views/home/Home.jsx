@@ -62,7 +62,6 @@ const Home = props => {
       <Button variant="primary"className="ms-2" as={Link} to={'http://localhost:5000/auth/login-google'}>
         Login con Google
       </Button></div>}
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>LOGIN</Modal.Title>

@@ -9,12 +9,14 @@ import { newPost } from "../../data/fetch";
 import Alert from 'react-bootstrap/Alert';
 import { AuthorContext } from "../../context/AuthorContextProvider";
 import {jwtDecode} from 'jwt-decode'
+import { useNavigate } from "react-router-dom";
 
 const NewBlogPost = props => {
   const [text, setText] = useState("");
   const [cover, setCover] = useState("");
   const {token, setToken} = useContext(AuthorContext)
   const decodedToken = jwtDecode(token)
+  const navigate = useNavigate()
   console.log(decodedToken)
   
   const initialFormValue = {
@@ -52,10 +54,16 @@ const NewBlogPost = props => {
     })
   });
 
+  const handleSend = async(event) =>{
+    event.preventDefault();
+    await newPost(formValue,cover)
+    navigate('/')
+  }
+
   return (
     
     <Container className="new-blog-container">
-      <Form className="mt-5">
+      <Form className="mt-5" onSubmit={handleSend}>
         <Form.Group controlId="blog-form" className="mt-3">
           <Form.Label>Titolo</Form.Label>
           {/* l'onChange cattura l'evento e lo passa alla funzione */}
@@ -86,12 +94,12 @@ const NewBlogPost = props => {
             Reset
           </Button>
           <Button
-            type="button"
+            type="submit"
             size="lg"
             variant="dark"
             style={{
               marginLeft: "1em",
-            }} onClick={()=>newPost(formValue,cover)}
+            }} 
           >
             Invia
           </Button>

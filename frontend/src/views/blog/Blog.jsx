@@ -1,27 +1,68 @@
-import React, { useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Image, Col, Row , Form ,Button, Modal} from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogAuthor from "../../components/blog/blog-author/BlogAuthor";
 import BlogLike from "../../components/likes/BlogLike";
 import posts from "../../data/posts.json";
 import "./styles.css";
-import { loadSinglePost } from "../../data/fetch";
+import { loadSinglePost, loadComments, newComment } from "../../data/fetch";
+import { AuthorContext } from "../../context/AuthorContextProvider";
 
 
 const Blog = props => {
+  const {token, setToken, authotInfo, setAuthorInfo} = useContext(AuthorContext)
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
+  const [comments, setComments] = useState([])
   const params = useParams();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const {id} = params
+
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const initialFormState = {
+
+      content: "",
+      post: id,
+
+    };
+  
+    const [formValue, setFormValue] = useState(initialFormState)
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormValue({
+        ...formValue,
+        [name]: value,
+      });
+    };
+
+    const handleSaveComment = async () =>{
+      try {
+        await newComment(id,formValue)
+        const commentsRes = await loadComments(id)
+        setComments(commentsRes.dati)
+        setFormValue(initialFormState)
+        handleClose()
+      } catch (error) {
+        console.error("Errore durante il salvataggio del commento:", error);
+      }
+    }
+
   useEffect(() => {
-    const { id } = params;
+    // const { id } = params;
     console.log(id)
     // const blog = posts.find(post => post._id.toString() === id);
     const blogPostDetails = async () =>{
       try {
         const res = await loadSinglePost(id);
+        const commentsRes = await loadComments(id)
         if (res){
           setBlog(res)
+          setComments(commentsRes.dati)
+          console.log({...blog.author})
           setLoading(false)
         }else { 
           console.log('non ho trovato')
@@ -67,7 +108,37 @@ const Blog = props => {
               __html: blog.content,
             }}
           ></div>
-          <div className="mt-5">Commenti: qui sotto</div>
+          <div className="mt-5">Post comments:</div>
+          <Row>
+          {comments.map((comment, i) => (
+          <Col
+          key={`item-${i}`}
+          md={8} className="mb-3"
+          style={{
+            marginBottom: 20,
+          }}
+        >
+          <div className="mt-2 border rounded bg-light">{comment.content}</div> 
+        </Col>
+      ))}
+    </Row>
+    <Button variant="primary" onClick={handleShow}>
+      Add Comment
+    </Button>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>New comment</Modal.Title>
+      </Modal.Header>
+      <Form.Control size="sm" type="text" placeholder="Max 100 characters" name="content" value={formValue.content} onChange={handleChange} />
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleSaveComment}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
         </Container>
       </div>
     );

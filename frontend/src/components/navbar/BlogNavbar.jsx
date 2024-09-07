@@ -101,7 +101,7 @@ const NavBar = props => {
           {!token && <Button className="ms-3" variant="secondary" onClick={handleShowReg}>
             Register
           </Button>}
-          {token && <Form className="d-flex">
+          {/* {token && <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search post"
@@ -109,7 +109,7 @@ const NavBar = props => {
               aria-label="Search"
             // onChange={handleSearch}
             />
-          </Form>}
+          </Form>} */}
           {token && <Button as={Link} to="/new" className="blog-navbar-add-button bg-dark" >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,13 +1,33 @@
-// export const loadAuthors = async () =>{
-//     const res = await fetch ('http://localhost:5000/authors')
-//     const data = await res.json();
-//     return data
+
+//FETCH PER LA SEARCHBAR
+export const loadPosts = async (search) =>{
+    const urlBase = 'http://localhost:5000/blogPosts'
+    const urlSearch= search && `?title=${search}`
+    const res = await fetch (urlBase + urlSearch,{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    const data = await res.json();
+    return data
+}
+
+// export const loadPosts = async (search) =>{
+
+//     const res = await fetch ('http://localhost:5000/blogPosts',{
+//             headers: {
+//                 "Authorization": `Bearer ${localStorage.getItem('token')}`
+//             }
+//         })
+//         const data = await res.json();
+//         return data
+//     }
+
+// export const search = async () => {
 // }
 
-import { useNavigate } from "react-router-dom";
-
-export const loadPosts = async () =>{
-    const res = await fetch ('http://localhost:5000/blogPosts',{
+export const loadComments = async (id) =>{
+    const res = await fetch (`http://localhost:5000/blogPosts/${id}/comments`,{
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
@@ -105,3 +125,17 @@ export const register = async (regFormValue, avatar) => {
     }
     
 }
+
+export const newComment = async (id, formValue) =>{
+ 
+    const res= await fetch (`http://localhost:5000/blogPosts/${id}/comments`, {
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`,
+            "Content-Type": "application/json"
+        },        
+        method: "POST",
+        body: JSON.stringify(formValue)
+    })
+    const data = await res.json() 
+    return data
+} 
