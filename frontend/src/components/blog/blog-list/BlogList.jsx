@@ -33,7 +33,6 @@ const BlogList = () => {
           }}
         >
           <BlogItem key={post.title} {...post} />
-          {/* <SingleBlogPost key={post.title} {...post}/> */}
         </Col>
       ))}
     </Row>

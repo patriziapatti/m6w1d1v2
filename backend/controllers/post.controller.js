@@ -44,7 +44,8 @@ export const getSinglePost = async (req,res)=>{
 export const addPost = async (req,res)=>{
     //crea un nuova istanza del modello autore con i dati definiti nella parentesi tonde (prendendoli dal body)
     // console.log(req.body)
-    const post = new Post ({...req.body, cover: req.file.path, readTime: JSON.parse(req.body.readTime)})
+    const coverPath = req.file ? req.file.path : 'https://picsum.photos/200/300';
+    const post = new Post ({...req.body, cover: coverPath, readTime: JSON.parse(req.body.readTime)})
     // const post = new Post (req.body)
     let newPost
     //res.send("sono la post che crea un nuovo post")

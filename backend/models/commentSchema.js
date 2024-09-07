@@ -13,6 +13,10 @@ const commentSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Post',
         },
+        // author: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'AuthorR',
+        // }
     },
     {collection: "comments",
         timestamps: true,

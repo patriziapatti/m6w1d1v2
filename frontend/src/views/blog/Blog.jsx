@@ -5,19 +5,24 @@ import BlogAuthor from "../../components/blog/blog-author/BlogAuthor";
 import BlogLike from "../../components/likes/BlogLike";
 import posts from "../../data/posts.json";
 import "./styles.css";
-import { loadSinglePost, loadComments, newComment } from "../../data/fetch";
+import { loadSinglePost, loadComments, newComment, commentAuthor } from "../../data/fetch";
 import { AuthorContext } from "../../context/AuthorContextProvider";
+// import {jwtDecode} from 'jwt-decode'
+
 
 
 const Blog = props => {
   const {token, setToken, authotInfo, setAuthorInfo} = useContext(AuthorContext)
+  // const decodedToken = jwtDecode(token)
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([])
   const params = useParams();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  // const [authorComment, setAuthorComment] = useState([])
   const {id} = params
+  // const authorR = decodedToken.authorId
 
 
   const handleClose = () => setShow(false);
@@ -52,6 +57,8 @@ const Blog = props => {
     }
 
   useEffect(() => {
+    // commentAuthor(authorR).then(data=>{setAuthorComment(data.name)})
+
     // const { id } = params;
     console.log(id)
     // const blog = posts.find(post => post._id.toString() === id);
@@ -62,11 +69,11 @@ const Blog = props => {
         if (res){
           setBlog(res)
           setComments(commentsRes.dati)
-          console.log({...blog.author})
+          console.log(blog.author)
           setLoading(false)
         }else { 
           console.log('non ho trovato')
-          // navigate("/404");
+          navigate("/404");
 
         }
       }catch (error) {
@@ -76,6 +83,7 @@ const Blog = props => {
     }
 
   blogPostDetails()
+
   }, [params, navigate]);
     if (loading) {
       return <div>loading</div>
@@ -119,6 +127,7 @@ const Blog = props => {
           }}
         >
           <div className="mt-2 border rounded bg-light">{comment.content}</div> 
+          {/* <div className="mt-2 border rounded bg-light" >{authorComment}</div>  */}
         </Col>
       ))}
     </Row>

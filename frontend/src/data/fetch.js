@@ -139,3 +139,14 @@ export const newComment = async (id, formValue) =>{
     const data = await res.json() 
     return data
 } 
+
+// export const commentAuthor = async (authorId) =>{
+//     const res= await fetch (`http://localhost:5000/authors/${authorId}`, {
+//         headers: {
+//             "Authorization": `Bearer ${localStorage.getItem('token')}`,
+//             "Content-Type": "application/json"
+//         },        
+//     })
+//     const data = await res.json() 
+//     return data
+// }
