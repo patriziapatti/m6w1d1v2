@@ -9,9 +9,15 @@ import { AuthorContext } from "../../../context/AuthorContextProvider";
 const BlogList = () => {
   const {token,setToken} = useContext(AuthorContext)
   const [posts, setPosts] = useState([])
+  const [search, setSearch] = useState("")
+
+  const handleSearch = (event) =>{
+   setSearch(event.target.value ?event.target.value: "" )
+   
+  }
   useEffect(()=>{
-    loadPosts('').then(data => setPosts(data.dati))
-  },[])
+    loadPosts(search).then(data => setPosts(data.dati))
+  },[search])
   return (
     <>
     {token && <Form className="d-flex">
@@ -20,7 +26,8 @@ const BlogList = () => {
               placeholder="Search post"
               className="me-2 mb-2 w-25"
               aria-label="Search"
-            // onChange={handleSearch}
+              name="search"
+            onChange={handleSearch}
             />
           </Form>}
     <Row>
