@@ -10,6 +10,7 @@ const BlogList = () => {
   const {token,setToken} = useContext(AuthorContext)
   const [posts, setPosts] = useState([])
   const [search, setSearch] = useState("")
+  const [aggiornaBlogList, setAggiornaBlogList] = useState(false)
 
   const handleSearch = (event) =>{
    setSearch(event.target.value ?event.target.value: "" )
@@ -17,7 +18,7 @@ const BlogList = () => {
   }
   useEffect(()=>{
     loadPosts(search).then(data => setPosts(data.dati))
-  },[search])
+  },[search,aggiornaBlogList])
   return (
     <>
     {token && <Form className="d-flex">
@@ -39,7 +40,7 @@ const BlogList = () => {
             marginBottom: 50,
           }}
         >
-          <BlogItem key={post.title} {...post} />
+          <BlogItem key={post.title} {...post} setAggiornaBlogList={setAggiornaBlogList} aggiornaBlogList={aggiornaBlogList} />
         </Col>
       ))}
     </Row>

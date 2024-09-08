@@ -9,14 +9,15 @@ import { deletePost } from '../../../data/fetch'
 
 const BlogItem = (props) => {
   const {token, setToken, authorInfo} = useContext(AuthorContext)
-  const { title, cover, author, _id } = props;
+  const { title, cover, author, _id , setAggiornaBlogList, aggiornaBlogList} = props;
   const navigate = useNavigate();
 
 const handleDelete = async () =>{
   try {
     await deletePost(_id)
     alert('Post deleted!')
-    navigate ('/')
+    setAggiornaBlogList(!aggiornaBlogList)
+    // navigate ('/')
   } catch (error) {
     console.error("Errore durante l'eliminazione del post:", error);
     alert ('Unable to delete the post')
