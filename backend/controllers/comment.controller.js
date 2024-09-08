@@ -8,7 +8,7 @@ export const getComments = async (req,res)=>{
     try {
         const comments = await Comment.find({
             post: req.params.postId,
-        }).populate('post',{title:1, _id:0})
+        }).populate('post',{title:1, _id:0}).populate('author')
         // .collation({locale: 'it'}) //serve per ignorare maiuscole e minuscole nell'ordine alfabetico del sort
         // .skip((page-1)*perPage)//salto la pagina precedente
         // .limit(perPage)
@@ -29,7 +29,7 @@ export const getComments = async (req,res)=>{
 
 export const getSingleComment = async (req,res)=>{
     try {
-        const singleComment = await Comment.findOne({post: req.params.postId, _id: req.params.commentId})
+        const singleComment = await Comment.findOne({post: req.params.postId, _id: req.params.commentId}).populate('author')
         return res.status(200).send(singleComment) 
     } catch (error) {console.log(error)
        return res.status(404).send({message: 'Not Found'}) 

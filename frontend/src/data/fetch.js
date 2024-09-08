@@ -1,5 +1,5 @@
 
-//FETCH PER LA SEARCHBAR
+//FETCH CARICAMENTO POST CHE INCLUDE LA SEARCHBAR
 export const loadPosts = async (search) =>{
     const urlBase = 'http://localhost:5000/blogPosts'
     const urlSearch= search && `?title=${search}`
@@ -12,20 +12,8 @@ export const loadPosts = async (search) =>{
     return data
 }
 
-// export const loadPosts = async (search) =>{
 
-//     const res = await fetch ('http://localhost:5000/blogPosts',{
-//             headers: {
-//                 "Authorization": `Bearer ${localStorage.getItem('token')}`
-//             }
-//         })
-//         const data = await res.json();
-//         return data
-//     }
-
-// export const search = async () => {
-// }
-
+//FETCH PER CARICARE TUTTI I COMMENTI
 export const loadComments = async (id) =>{
     const res = await fetch (`http://localhost:5000/blogPosts/${id}/comments`,{
         headers: {
@@ -36,6 +24,7 @@ export const loadComments = async (id) =>{
     return data
 }
 
+//FETCH PER CARICARE SINGOLO POST TRAMITE ID
 export const loadSinglePost = async (paramsId) =>{
     console.log(paramsId)
     const res = await fetch (`http://localhost:5000/blogPosts/${paramsId}`, {
@@ -47,6 +36,8 @@ export const loadSinglePost = async (paramsId) =>{
     return data
 }
 
+
+//FETCH PER CREAZIONE DI NUOVO POST TRAMITE IL FORM 
 export const newPost = async (formValue,cover) =>{
     const formData = new FormData()
     formData.append('cover', cover)
@@ -67,6 +58,8 @@ export const newPost = async (formValue,cover) =>{
     return data
 } 
 
+
+//FETCH PER LA LOGIN
 export const login = async (formValue) => {
     try {
         const res = await fetch('http://localhost:5000/auth/login', {
@@ -88,6 +81,8 @@ export const login = async (formValue) => {
     }    
 }
 
+
+//FETCH ME
 export const me = async() =>{
     const res = await fetch('http://localhost:5000/auth/me',{
         headers: {
@@ -101,6 +96,8 @@ export const me = async() =>{
     return data
 }
 
+
+//FETCH PER LA REGISTRAZIONE DEL NUOVO UTENTE
 export const register = async (regFormValue, avatar) => {
     // console.log(regFormValue)
     const formData = new FormData()
@@ -126,6 +123,8 @@ export const register = async (regFormValue, avatar) => {
     
 }
 
+
+//FETCH PER AGGIUNGERE UN COMMENTO A SINGOLO POST
 export const newComment = async (id, formValue) =>{
  
     const res= await fetch (`http://localhost:5000/blogPosts/${id}/comments`, {
@@ -139,6 +138,29 @@ export const newComment = async (id, formValue) =>{
     const data = await res.json() 
     return data
 } 
+
+//FETCH PER ELIMINARE UN POST 
+export const deletePost = async (postId) =>{
+    try {
+        const res = await fetch(`http://localhost:5000/blogPosts/${postId}`, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                "Content-Type": "application/json"
+            },        
+            method: "DELETE",
+        })
+        if (res.ok) {
+            console.log(`Post con ID ${postId} eliminato con successo.`);
+        } else {
+            const errorData = await res.json()
+            console.error(`Errore: ${errorData.message}`);
+        }
+    } catch (error) {
+        console.error(`Errore durante l'eliminazione del post: ${error.message}`);
+    }
+}
+
+
 
 // export const commentAuthor = async (authorId) =>{
 //     const res= await fetch (`http://localhost:5000/authors/${authorId}`, {

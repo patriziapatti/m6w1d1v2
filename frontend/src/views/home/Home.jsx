@@ -20,7 +20,8 @@ const Home = props => {
       setToken(searchParams.get('token'))// aggiorna il token nello stato del contesto
     }
   },[])
-  const {token, setToken} = useContext(AuthorContext)
+  const {token, setToken, authorInfo} = useContext(AuthorContext)
+  // console.log(authorInfo._id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

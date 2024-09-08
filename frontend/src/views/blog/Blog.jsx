@@ -7,22 +7,20 @@ import posts from "../../data/posts.json";
 import "./styles.css";
 import { loadSinglePost, loadComments, newComment, commentAuthor } from "../../data/fetch";
 import { AuthorContext } from "../../context/AuthorContextProvider";
-// import {jwtDecode} from 'jwt-decode'
+import {jwtDecode} from 'jwt-decode'
 
 
 
 const Blog = props => {
   const {token, setToken, authotInfo, setAuthorInfo} = useContext(AuthorContext)
-  // const decodedToken = jwtDecode(token)
+  const decodedToken = jwtDecode(token)
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([])
   const params = useParams();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  // const [authorComment, setAuthorComment] = useState([])
   const {id} = params
-  // const authorR = decodedToken.authorId
 
 
   const handleClose = () => setShow(false);
@@ -32,6 +30,7 @@ const Blog = props => {
 
       content: "",
       post: id,
+      author: decodedToken.authorId
 
     };
   
@@ -127,7 +126,7 @@ const Blog = props => {
           }}
         >
           <div className="mt-2 border rounded bg-light">{comment.content}</div> 
-          {/* <div className="mt-2 border rounded bg-light" >{authorComment}</div>  */}
+          <div className="mt-2 border rounded bg-secondary text-white w-25" >{comment.author.name}</div>
         </Col>
       ))}
     </Row>

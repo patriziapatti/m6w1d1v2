@@ -12,12 +12,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2Z
 
 ###
 
-POST {{baseUrl}}/66d9916a171fe5c5f256743d/comments
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDZjNzkyNDM5N2ZiYjFlNDI0YjNlYyIsImlhdCI6MTcyNTczMzY4MCwiZXhwIjoxNzI1Nzc2ODgwfQ.QUt7opSekncgbUaKb3KQ98AvGbFWoKAxanike0U_Vbw
+POST {{baseUrl}}/66db52a9e0aea6d95cfe5bca/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JJZCI6IjY2ZDZjNzkyNDM5N2ZiYjFlNDI0YjNlYyIsImlhdCI6MTcyNTc4MzUzNywiZXhwIjoxNzI1ODI2NzM3fQ.kql9NTpCXy9MkUtTa53Ypqvp9_X4Ng7hdZVD6DM05fI
 Content-Type: application/json
  
 {
-    "content": "commento difhggf pd",
+    "author": "66d8ba566d4a61d19173feaf",
+    "content": "commento difhggf pd"
 
 } 
 
