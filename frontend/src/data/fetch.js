@@ -160,6 +160,19 @@ export const deletePost = async (postId) =>{
     }
 }
 
+//FETCH PER MODIFICARE IL POST (NO COVER)
+// export const editPost = async (postId, formValue) =>{
+//     const res = await fetch(`http://localhost:5000/blogPosts/${postId}`, {
+//         headers: {
+//             "Authorization": `Bearer ${localStorage.getItem('token')}`,
+//             "Content-Type": "application/json"
+//         },        
+//         method: "PUT",
+//         body: JSON.stringify(formValue)
+//     })
+
+// }
+
 
 
 // export const commentAuthor = async (authorId) =>{
