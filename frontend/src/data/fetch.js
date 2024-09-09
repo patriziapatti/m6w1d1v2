@@ -160,6 +160,44 @@ export const deletePost = async (postId) =>{
     }
 }
 
+
+//FETCH PER MODIFICARE I COMMENTI AI POST
+export const updateComment = async (blogpostId, commentId, updatedCommentData) => {
+    try {
+      const response = await fetch(`http://localhost:5000/blogPosts/${blogpostId}/comment/${commentId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`, // Invia il token JWT per autenticazione
+        },
+        body: JSON.stringify(updatedCommentData), // Il nuovo contenuto del commento
+      });
+  
+      if (!response.ok) {
+        throw new Error("Errore durante l'aggiornamento del commento");
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Errore nell'update del commento:", error);
+      throw error;
+    }
+  };
+
+
+  //FETCH PER ELIMINARE UN COMMENTO
+  export const deleteComment = async (blogpostId, commentId) => {
+    /*   try { */
+        const response = await fetch(`http://localhost:5000/blogPosts/${blogpostId}/comment/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,  // Assicurati di avere il token corretto
+          },
+        });
+    }
+
 //FETCH PER MODIFICARE IL POST (NO COVER)
 // export const editPost = async (postId, formValue) =>{
 //     const res = await fetch(`http://localhost:5000/blogPosts/${postId}`, {
