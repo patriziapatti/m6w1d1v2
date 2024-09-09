@@ -1,17 +1,19 @@
 
 //FETCH CARICAMENTO POST CHE INCLUDE LA SEARCHBAR
-export const loadPosts = async (search, page = 1, perPage = 8) =>{
-    const urlBase = 'http://localhost:5000/blogPosts'
-    const urlSearch= search && `?title=${search}`
-    const URL = `${urlBase}?page=${page}&perPage=${perPage}${urlSearch}`
-    const res = await fetch (URL,{
-        headers: {
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-        }
-    })
+export const loadPosts = async (search, page = 1, perPage = 8) => {
+    const urlBase = 'http://localhost:5000/blogPosts';
+    const searchParam = search ? `&title=${search}` : '';
+    const url = `${urlBase}?page=${page}&perPage=${perPage}${searchParam}`;
+  
+    const res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+  
     const data = await res.json();
-    return data
-}
+    return data;
+  };
 
 
 //FETCH PER CARICARE TUTTI I COMMENTI

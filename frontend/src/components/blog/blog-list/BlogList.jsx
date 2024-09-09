@@ -19,7 +19,7 @@ const BlogList = () => {
    
   }
   useEffect(()=>{
-    loadPosts(search, currentPage).then(data => {
+    loadPosts(search, currentPage).then((data) => {
       setPosts(data.dati);
       setTotalPages(data.totalPages)
     })

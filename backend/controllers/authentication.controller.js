@@ -38,7 +38,7 @@ export const login = async (req,res) => {
         {authorId: author.id},
         process.env.JWT_SECRET,
         {
-            expiresIn: '12h'
+            expiresIn: '1h'
         },
         (err, jwtToken) =>{
             if (err) return res.status(500).send();
