@@ -1,4 +1,4 @@
-import { Col, Row, Form } from "react-bootstrap";
+import { Col, Row, Form , Button} from "react-bootstrap";
 // import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
 import { loadPosts } from "../../../data/fetch";
@@ -11,14 +11,32 @@ const BlogList = () => {
   const [posts, setPosts] = useState([])
   const [search, setSearch] = useState("")
   const [aggiornaBlogList, setAggiornaBlogList] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   const handleSearch = (event) =>{
    setSearch(event.target.value ?event.target.value: "" )
    
   }
   useEffect(()=>{
-    loadPosts(search).then(data => setPosts(data.dati))
-  },[search,aggiornaBlogList])
+    loadPosts(search, currentPage).then(data => {
+      setPosts(data.dati);
+      setTotalPages(data.totalPages)
+    })
+  },[search,currentPage,aggiornaBlogList])
+
+  const goToNextPage = () =>{
+    if(currentPage < totalPages){
+      setCurrentPage(currentPage +1)
+    }
+  }
+
+  const goToPreviousPage = () =>{
+    if(currentPage > 1){
+      setCurrentPage(currentPage -1);
+    }
+  }
+  
   return (
     <>
     {token && <Form className="d-flex">
@@ -44,6 +62,17 @@ const BlogList = () => {
         </Col>
       ))}
     </Row>
+    <div className="d-flex justify-content-end align-items-center">
+        <Button className="me-2" onClick={goToPreviousPage} disabled={currentPage === 1}>
+          Previous
+        </Button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button className="ms-2" onClick={goToNextPage} disabled={currentPage === totalPages}>
+          Next
+        </Button>
+      </div>
     </>
   );
 };

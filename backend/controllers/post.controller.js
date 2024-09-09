@@ -6,8 +6,8 @@ import transport from '../services/mailService.js';
 
 export const getPost = async (req,res)=>{
     const page = req.query.page || 1
-    let perPage = req.query.perPage || 12
-    perPage = perPage > 12 ? 10 : perPage
+    let perPage = req.query.perPage ||8
+    perPage = perPage > 10 ? 8 : perPage
     try {
         const allPosts = await Post.find(req.query.title? {title: {$regex: req.query.title ,$options: "i"}}: {}) //il find sulla ricerca di un post con il titolo
         .collation({locale: 'it'}) //serve per ignorare maiuscole e minuscole nell'ordine alfabetico del sort

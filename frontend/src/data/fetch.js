@@ -1,9 +1,10 @@
 
 //FETCH CARICAMENTO POST CHE INCLUDE LA SEARCHBAR
-export const loadPosts = async (search) =>{
+export const loadPosts = async (search, page = 1, perPage = 8) =>{
     const urlBase = 'http://localhost:5000/blogPosts'
     const urlSearch= search && `?title=${search}`
-    const res = await fetch (urlBase + urlSearch,{
+    const URL = `${urlBase}?page=${page}&perPage=${perPage}${urlSearch}`
+    const res = await fetch (URL,{
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
